@@ -248,6 +248,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0ac045d01dac664fa4e72fdbcbc6345, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MinimumPlayersForGame: 1
+  LocalPlayer: {fileID: 0}
+  StartPanel: {fileID: 0}
+  GameOverPanel: {fileID: 0}
+  HealthTextLabel: {fileID: 0}
+  ScoreTextLabel: {fileID: 0}
+  ScoreText: {fileID: 658771938}
+  PlayerNameText: {fileID: 0}
+  IsGameReady: 0
+  IsGameOver: 0
+  HealthText: {fileID: 0}
+  WinnerNameText: {fileID: 0}
+  Rock: {fileID: 2011581032}
+  Paper: {fileID: 1177539670}
+  Scissors: {fileID: 671561866}
+  players: []
 --- !u!1 &601119613
 GameObject:
   m_ObjectHideFlags: 0
