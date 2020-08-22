@@ -13,14 +13,13 @@ public class RPSManager : MonoBehaviour
     public GameObject GameOverPanel;
     public GameObject HealthTextLabel;
     public GameObject ScoreTextLabel;
+    public Text HealthText;
     public Text ScoreText;
     public Text PlayerNameText;
+    public Text WinnerNameText;
     public bool IsGameReady;
     public bool IsGameOver;
-    public Text HealthText;
-    public Text WinnerNameText;
-
-    public Button Rock, Paper, Scissors;
+    public Button RockButton, PaperButton, ScissorsButton;
     public List<PlayerUIBehavior> players = new List<PlayerUIBehavior>();
 
     void Update()
@@ -36,7 +35,7 @@ public class RPSManager : MonoBehaviour
             }
             else
             {
-                //ShowReadyMenu();
+                ShowReadyMenu();
                 UpdateStats();
             }
         }
@@ -47,6 +46,17 @@ public class RPSManager : MonoBehaviour
             LocalPlayer = null;
             players.Clear();
         }
+    }
+
+    void ShowReadyMenu()
+    {
+        if (NetworkManager.singleton.mode == NetworkManagerMode.ServerOnly)
+            return;
+
+        if (LocalPlayer.isReady)
+            return;
+
+        StartPanel.SetActive(true);
     }
 
     void GameReadyCheck()
@@ -155,5 +165,20 @@ public class RPSManager : MonoBehaviour
         {
             player.allowMovement = false;
         }
+    }
+
+    public void ClickRock()
+    {
+        ScoreText.text = "You clicked Rock";
+    }
+
+    public void ClickPaper()
+    {
+        ScoreText.text = "You clicked Paper";
+    }
+
+    public void ClickScissors()
+    {
+        ScoreText.text = "You clicked Scissors";
     }
 }

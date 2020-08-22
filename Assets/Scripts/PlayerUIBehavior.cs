@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class PlayerUIBehavior : NetworkBehaviour
 {
-
     [Header("Game Stats")]
     [SyncVar]
     public int health;
@@ -24,7 +23,20 @@ public class PlayerUIBehavior : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
+        nameText.text = playerName;
 
+        // movement for local player
+        if (!isLocalPlayer)
+            return;
+
+        //Set local players name color to green
+        nameText.color = Color.green;
+
+        if (!allowMovement)
+            return;
+
+        if (isDead)
+            return;
     }
 
     public void SendReadyToServer(string playername)
