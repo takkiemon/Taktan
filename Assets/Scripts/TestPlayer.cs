@@ -7,6 +7,18 @@ public class TestPlayer : NetworkBehaviour
 {
     [SyncVar(hook = nameof(OnRockCountChanged))]
     int rockCount = 0;
+    public GameObject canvasPrefab;
+    private GameObject playerCanvas;
+
+    private void Start()
+    {
+        if (isLocalPlayer)
+        {
+            playerCanvas = Instantiate(canvasPrefab);
+            playerCanvas.GetComponent<PlayerCanvas>().SetPlayerScript(this);
+            playerCanvas.GetComponent<PlayerCanvas>().SetButtons();
+        }
+    }
 
     void HandleMovement()
     {
@@ -21,6 +33,7 @@ public class TestPlayer : NetworkBehaviour
 
     struct OrderMessage
     {
+        int playerID;
         int noOfActions;
 
     }
@@ -44,6 +57,21 @@ public class TestPlayer : NetworkBehaviour
                 Scissors();
             }
         }
+    }
+
+    public void Rock2()
+    {
+        Rock();
+    }
+
+    public void Paper2()
+    {
+        Paper();
+    }
+
+    public void Scissors2()
+    {
+        Scissors();
     }
 
     [Command]
