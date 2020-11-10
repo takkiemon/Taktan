@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class PlayerCanvas : MonoBehaviour
 {
     TestPlayer player;
-    Button[] RPSButtons;
+    Button[] RPSButtons; // RPSButtons[0] = Rock, [1] = Paper, [2] = Scissors
 
     // Start is called before the first frame update
     void Start()
@@ -32,14 +32,17 @@ public class PlayerCanvas : MonoBehaviour
         {
             if (button.name == "RockButton")
             {
+                RPSButtons[0] = button;
                 button.onClick.AddListener(player.Rock);
             }
             else if (button.name == "PaperButton")
             {
+                RPSButtons[1] = button;
                 button.onClick.AddListener(player.Paper);
             }
             else if (button.name == "ScissorsButton")
             {
+                RPSButtons[2] = button;
                 button.onClick.AddListener(player.Scissors);
             }
         }

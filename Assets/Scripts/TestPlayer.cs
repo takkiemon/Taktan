@@ -9,7 +9,9 @@ public class TestPlayer : NetworkBehaviour
     int rockCount = 0;
     int playerID;
     public GameObject canvasPrefab;
+    public GameObject nameCanvasPrefab;
     private GameObject playerCanvas;
+    private GameObject nameCanvas;
 
     private void Start()
     {
