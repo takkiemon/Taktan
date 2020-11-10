@@ -1,5 +1,4 @@
 using System;
-using System.Diagnostics;
 
 namespace Mirror.Examples.Chat
 {
@@ -21,12 +20,6 @@ namespace Mirror.Examples.Chat
         public void RpcReceive(string message)
         {
             OnMessage?.Invoke(this, message);
-        }
-
-        [Command]
-        public void Rock()
-        {
-            Debug.Write("Mune ni Rocks!");
         }
     }
 }

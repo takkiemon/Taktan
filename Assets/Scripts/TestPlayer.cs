@@ -7,6 +7,7 @@ public class TestPlayer : NetworkBehaviour
 {
     [SyncVar(hook = nameof(OnRockCountChanged))]
     int rockCount = 0;
+    int playerID;
     public GameObject canvasPrefab;
     private GameObject playerCanvas;
 
@@ -14,9 +15,10 @@ public class TestPlayer : NetworkBehaviour
     {
         if (isLocalPlayer)
         {
-            playerCanvas = Instantiate(canvasPrefab);
+            playerCanvas = Instantiate(canvasPrefab, this.gameObject.transform);
             playerCanvas.GetComponent<PlayerCanvas>().SetPlayerScript(this);
             playerCanvas.GetComponent<PlayerCanvas>().SetButtons();
+            playerCanvas.SetActive(false);
         }
     }
 
@@ -31,7 +33,7 @@ public class TestPlayer : NetworkBehaviour
         }
     }
 
-    struct OrderMessage
+    struct OrderMessage // this would be used to send all the choices a player made in one command, so all the decisions would be sent at once instead of trickling in. This design choice is made to possibly prevent cheating by the person who hosts.
     {
         int playerID;
         int noOfActions;
@@ -59,27 +61,10 @@ public class TestPlayer : NetworkBehaviour
         }
     }
 
-    public void Rock2()
-    {
-        Rock();
-    }
-
-    public void Paper2()
-    {
-        Paper();
-    }
-
-    public void Scissors2()
-    {
-        Scissors();
-    }
-
     [Command]
     public void Rock()
     {
         Debug.Log("Mune ni Rocks!");
-        rockCount++;
-        ReplyRock();
     }
 
     [Command]

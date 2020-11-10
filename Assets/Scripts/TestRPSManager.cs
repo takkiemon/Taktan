@@ -5,14 +5,18 @@ using Mirror;
 
 public class TestRPSManager : NetworkManager
 {
+    List<NetworkConnection> playerList;
     public override void OnStartServer()
     {
         Debug.Log("Server Started!");
+        playerList = new List<NetworkConnection>();
+        playerList.Clear();
     }
 
     public override void OnStopServer()
     {
         Debug.Log("Server Stopped!");
+        playerList.Clear();
     }
 
     public override void OnClientConnect(NetworkConnection conn)

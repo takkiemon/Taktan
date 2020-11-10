@@ -1,0 +1,13 @@
+diff a/Assets/Mirror/Examples/Chat/Scripts/Player.cs b/Assets/Mirror/Examples/Chat/Scripts/Player.cs	(rejected hunks)
+@@ -22,5 +22,11 @@
+         {
+             OnMessage?.Invoke(this, message);
+         }
++
++        [Command]
++        public void Rock()
++        {
++            Debug.Write("Mune ni Rocks!");
++        }
+     }
+ }
