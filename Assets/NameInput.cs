@@ -5,9 +5,15 @@ using UnityEngine.UI;
 
 public class NameInput : MonoBehaviour
 {
-    InputField nameField;
+    public TestPlayer player;
+    public InputField nameField;
 
-    public string SetName()
+    public void SetName()
+    {
+        player.name = GetName();
+    }
+
+    public string GetName()
     {
         return nameField.text;
     }
